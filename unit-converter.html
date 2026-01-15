@@ -31,7 +31,38 @@
             <!-- Converter sections will be populated here -->
             <section id="length" class="converter-section active">
                 <h2>Length Converter</h2>
-                <p>Select a conversion unit</p>
+                <div class="converter-form">
+                    <div class="input-group">
+                        <label for="lengthInput">Enter Value:</label>
+                        <input type="number" id="lengthInput" class="converter-input" placeholder="Enter value" value="1">
+                    </div>
+
+                    <div class="units-container">
+                        <div class="unit-box">
+                            <label for="lengthFromUnit">From:</label>
+                            <select id="lengthFromUnit" class="unit-select">
+                                <option value="m">Meters (m)</option>
+                                <option value="cm">Centimeters (cm)</option>
+                                <option value="inch">Inches (in)</option>
+                                <option value="mile">Miles (mi)</option>
+                            </select>
+                        </div>
+
+                        <div class="unit-box">
+                            <label for="lengthToUnit">To:</label>
+                            <select id="lengthToUnit" class="unit-select">
+                                <option value="m">Meters (m)</option>
+                                <option value="cm" selected>Centimeters (cm)</option>
+                                <option value="inch">Inches (in)</option>
+                                <option value="mile">Miles (mi)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="result-box">
+                        <p class="result-text"><span id="lengthInputDisplay">1</span> <span id="lengthFromUnitDisplay">m</span> = <span id="lengthResult">100</span> <span id="lengthToUnitDisplay">cm</span></p>
+                    </div>
+                </div>
             </section>
 
             <section id="weight" class="converter-section">

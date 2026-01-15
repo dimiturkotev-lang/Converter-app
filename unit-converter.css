@@ -120,6 +120,100 @@ body {
     font-size: 1.1rem;
 }
 
+/* ==========================================
+   Converter Form Styles
+   ========================================== */
+
+.converter-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-group label {
+    font-weight: 600;
+    color: #333;
+    font-size: 0.95rem;
+}
+
+.converter-input {
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.converter-input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 8px rgba(102, 126, 234, 0.2);
+}
+
+.units-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.unit-box {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.unit-box label {
+    font-weight: 600;
+    color: #333;
+    font-size: 0.95rem;
+}
+
+.unit-select {
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.unit-select:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 8px rgba(102, 126, 234, 0.2);
+}
+
+.unit-select:hover {
+    border-color: #667eea;
+}
+
+.result-box {
+    background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+    padding: 20px;
+    border-radius: 8px;
+    border: 2px solid #667eea30;
+    text-align: center;
+}
+
+.result-text {
+    font-size: 1.3rem;
+    color: #333;
+    margin: 0;
+    font-weight: 500;
+}
+
+.result-text span {
+    font-weight: 700;
+    color: #667eea;
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -196,6 +290,11 @@ body {
         font-size: 1.5rem;
     }
 
+    .units-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
     .main-content {
         padding: 20px;
     }
@@ -225,6 +324,20 @@ body {
 
     .converter-section h2 {
         font-size: 1.2rem;
+    }
+
+    .units-container {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .converter-input,
+    .unit-select {
+        font-size: 16px;
+    }
+
+    .result-text {
+        font-size: 1.1rem;
     }
 
     .footer-links {
