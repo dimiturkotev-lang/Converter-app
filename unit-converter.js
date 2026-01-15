@@ -2,7 +2,7 @@
 // Unit Converter - Main Application
 // ==========================================
 
-// Conversion factors (base unit: meters)
+// Conversion factors (base unit: meters for length, Celsius for temperature)
 const CONVERSION_FACTORS = {
     length: {
         m: 1,
@@ -12,11 +12,25 @@ const CONVERSION_FACTORS = {
     }
 };
 
+// Temperature conversion functions (base unit: Celsius)
+const TEMPERATURE_CONVERTERS = {
+    c: (value) => value, // Celsius is base
+    f: (celsius) => (celsius * 9/5) + 32, // Celsius to Fahrenheit
+    k: (celsius) => celsius + 273.15 // Celsius to Kelvin
+};
+
+const TEMPERATURE_TO_CELSIUS = {
+    c: (value) => value, // Celsius is base
+    f: (fahrenheit) => (fahrenheit - 32) * 5/9, // Fahrenheit to Celsius
+    k: (kelvin) => kelvin - 273.15 // Kelvin to Celsius
+};
+
 class UnitConverter {
     constructor() {
         this.currentConverter = 'length';
         this.initializeEventListeners();
         this.initializeLengthConverter();
+        this.initializeTemperatureConverter();
     }
 
     /**
@@ -74,6 +88,57 @@ class UnitConverter {
         document.getElementById('lengthResult').textContent = result.toFixed(6).replace(/\.?0+$/, '');
         document.getElementById('lengthFromUnitDisplay').textContent = fromUnit;
         document.getElementById('lengthToUnitDisplay').textContent = toUnit;
+    }
+
+    /**
+     * Initialize temperature converter event listeners and conversions
+     */
+    initializeTemperatureConverter() {
+        const temperatureInput = document.getElementById('temperatureInput');
+        const temperatureFromUnit = document.getElementById('temperatureFromUnit');
+        const temperatureToUnit = document.getElementById('temperatureToUnit');
+
+        if (temperatureInput && temperatureFromUnit && temperatureToUnit) {
+            // Add event listeners for real-time conversion
+            temperatureInput.addEventListener('input', () => this.convertTemperature());
+            temperatureFromUnit.addEventListener('change', () => this.convertTemperature());
+            temperatureToUnit.addEventListener('change', () => this.convertTemperature());
+
+            // Perform initial conversion
+            this.convertTemperature();
+        }
+    }
+
+    /**
+     * Convert temperature values between different units
+     */
+    convertTemperature() {
+        const inputValue = parseFloat(document.getElementById('temperatureInput').value);
+        const fromUnit = document.getElementById('temperatureFromUnit').value;
+        const toUnit = document.getElementById('temperatureToUnit').value;
+
+        if (isNaN(inputValue)) {
+            document.getElementById('temperatureResult').textContent = '0';
+            document.getElementById('temperatureInputDisplay').textContent = '0';
+            return;
+        }
+
+        // Convert from source unit to Celsius, then to target unit
+        const valueInCelsius = TEMPERATURE_TO_CELSIUS[fromUnit](inputValue);
+        const result = TEMPERATURE_CONVERTERS[toUnit](valueInCelsius);
+
+        // Get unit display names
+        const unitDisplayNames = {
+            c: '°C',
+            f: '°F',
+            k: 'K'
+        };
+
+        // Update result display
+        document.getElementById('temperatureInputDisplay').textContent = inputValue;
+        document.getElementById('temperatureResult').textContent = result.toFixed(2);
+        document.getElementById('temperatureFromUnitDisplay').textContent = unitDisplayNames[fromUnit];
+        document.getElementById('temperatureToUnitDisplay').textContent = unitDisplayNames[toUnit];
     }
 
     /**
