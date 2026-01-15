@@ -20,6 +20,7 @@
         <ul class="nav-list">
             <li><a href="#" class="nav-link active" data-converter="length">Length</a></li>
             <li><a href="#" class="nav-link" data-converter="temperature">Temperature</a></li>
+            <li><a href="#" class="nav-link" data-converter="currency">Currency</a></li>
         </ul>
     </nav>
 
@@ -93,6 +94,40 @@
 
                     <div class="result-box">
                         <p class="result-text"><span id="temperatureInputDisplay">0</span> <span id="temperatureFromUnitDisplay">°C</span> = <span id="temperatureResult">32</span> <span id="temperatureToUnitDisplay">°F</span></p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="currency" class="converter-section">
+                <h2>Currency Converter</h2>
+                <div class="converter-form">
+                    <div class="input-group">
+                        <label for="currencyInput">Enter Value:</label>
+                        <input type="number" id="currencyInput" class="converter-input" placeholder="Enter value" value="1">
+                    </div>
+
+                    <div class="units-container">
+                        <div class="unit-box">
+                            <label for="currencyFromUnit">From:</label>
+                            <select id="currencyFromUnit" class="unit-select">
+                                <option value="usd">US Dollar (USD)</option>
+                                <option value="eur">Euro (EUR)</option>
+                                <option value="gbp">British Pound (GBP)</option>
+                            </select>
+                        </div>
+
+                        <div class="unit-box">
+                            <label for="currencyToUnit">To:</label>
+                            <select id="currencyToUnit" class="unit-select">
+                                <option value="usd">US Dollar (USD)</option>
+                                <option value="eur" selected>Euro (EUR)</option>
+                                <option value="gbp">British Pound (GBP)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="result-box">
+                        <p class="result-text"><span id="currencyInputDisplay">1</span> <span id="currencyFromUnitDisplay">USD</span> = <span id="currencyResult">0.92</span> <span id="currencyToUnitDisplay">EUR</span></p>
                     </div>
                 </div>
             </section>
